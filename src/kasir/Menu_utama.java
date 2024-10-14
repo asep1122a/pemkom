@@ -11,14 +11,13 @@ import javax.swing.JFrame;
  * @author miqda
  */
 public class Menu_utama extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Menu_utama
-     */
     public Menu_utama() {
         initComponents();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
+    /**
+     * Creates new form Menu_utama
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -30,7 +29,7 @@ public class Menu_utama extends javax.swing.JFrame {
     private void initComponents() {
 
         Nav = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        profil = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         SIde = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -44,7 +43,7 @@ public class Menu_utama extends javax.swing.JFrame {
         Nav.setBackground(new java.awt.Color(255, 204, 204));
         Nav.setPreferredSize(new java.awt.Dimension(888, 75));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kasir/img/PP.png"))); // NOI18N
+        profil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/kasir/img/PP.png"))); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setText("WELCOME");
@@ -55,7 +54,7 @@ public class Menu_utama extends javax.swing.JFrame {
             NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NavLayout.createSequentialGroup()
                 .addGap(17, 17, 17)
-                .addComponent(jLabel1)
+                .addComponent(profil)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(697, Short.MAX_VALUE))
@@ -65,7 +64,7 @@ public class Menu_utama extends javax.swing.JFrame {
             .addGroup(NavLayout.createSequentialGroup()
                 .addGap(16, 16, 16)
                 .addGroup(NavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
+                    .addComponent(profil, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
                     .addComponent(jLabel2))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -155,11 +154,11 @@ public class Menu_utama extends javax.swing.JFrame {
     private javax.swing.JPanel Nav;
     private javax.swing.JPanel SIde;
     private javax.swing.JPanel conten;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel menu;
+    private javax.swing.JLabel profil;
     // End of variables declaration//GEN-END:variables
 }
