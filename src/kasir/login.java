@@ -4,8 +4,13 @@
  */
 package kasir;
 
-import java.io.ObjectInputFilter.Config;
+import java.awt.Frame;
+import java.awt.HeadlessException;
+
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +26,57 @@ public class login extends javax.swing.JFrame {
         initComponents();
     }
 
+    private void LoginNow() {
+
+        String user = txt_username.getText();
+        String pass = new String(txt_password.getPassword());
+
+        try {
+            Connection K = koneksi.Go();
+            String Q = "SELECT * FROM `akun` WHERE username=? AND password=?;";
+            PreparedStatement S = K.prepareStatement(Q);
+            S.setString(1, user);
+            S.setString(2, pass);
+            ResultSet R = S.executeQuery();
+            int count = 0;
+            Profiluser P = new Profiluser();
+            while (R.next()) {
+                P.setId_akun(R.getInt("id_akun"));
+                P.setNama(R.getString("nama"));
+                P.setUsername(R.getString("username"));
+                P.setPassword(R.getString("password"));
+                P.setRole(R.getString("role"));
+                count++;
+            }
+
+            if (count > 0) {
+                //JOptionPane.showMessageDialog(this, "Sukses Login");
+                if (P.getRole().equals("admin")) {
+                    adminpage O = new adminpage(P);
+                    O.setExtendedState(Frame.MAXIMIZED_BOTH);
+                    this.setVisible(false);
+                    O.setVisible(true);
+                } else if (P.getRole().equals("kasir")) {
+                    kasirpage O = new kasirpage(P);
+                    O.setExtendedState(Frame.MAXIMIZED_BOTH);
+                    this.setVisible(false);
+                    O.setVisible(true);
+                } else if (P.getRole().equals("owner")) {
+                    ownerpage O = new ownerpage(P);
+                    O.setExtendedState(Frame.MAXIMIZED_BOTH);
+                    this.setVisible(false);
+                    O.setVisible(true);
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Invalid username/password");
+                txt_username.requestFocus();
+            }
+
+        } catch (HeadlessException | SQLException e) {
+            System.err.println(e.getMessage());
+        }
+
+    }    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -97,7 +153,7 @@ public class login extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(txt_login)
                         .addComponent(txt_password, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addContainerGap(11, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -153,43 +209,18 @@ public class login extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
-        setSize(new java.awt.Dimension(620, 358));
+        pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txt_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_loginActionPerformed
-        // TODO add your handling code here:
-        try {
-        String sql = "SELECT * FROM akun WHERE username=? AND password=?";
-        Connection conn = koneksi.Go();
-        java.sql.PreparedStatement pst = conn.prepareStatement(sql);
-        pst.setString(1, txt_username.getText());
-        pst.setString(2, txt_password.getText());
-        java.sql.ResultSet rs = pst.executeQuery();
-        if (rs.next()) {
-//            JOptionPane.showMessageDialog(null, "Berhasil login");
-            this.setVisible(false);
-            new Menu_utama().setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(null, "Username atau password salah");
-        }
-    } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, e.getMessage());
-    }
+        // TODO add your handling code here: 
+        LoginNow(); 
         
     }//GEN-LAST:event_txt_loginActionPerformed
-
+    
     private void txt_usernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usernameActionPerformed
         // TODO add your handling code here:
         txt_password.requestFocus();
@@ -229,10 +260,11 @@ public class login extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new login().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            login L = new login();
+//            L.setExtendedState(Frame.MAXIMIZED_BOTH);
+            L.setAlwaysOnTop(true); 
+            L.setVisible(true);
         });
     }
 
@@ -250,5 +282,5 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables
 
-
+    
 }
