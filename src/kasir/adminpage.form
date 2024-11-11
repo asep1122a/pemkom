@@ -83,6 +83,11 @@
                       </Group>
                       <EmptySpace pref="628" max="32767" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="Logout" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -92,7 +97,9 @@
                       <Component id="txtWelcome" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="Labeluser" min="-2" pref="28" max="-2" attributes="0"/>
-                      <EmptySpace pref="70" max="32767" attributes="0"/>
+                      <EmptySpace pref="33" max="32767" attributes="0"/>
+                      <Component id="Logout" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -107,6 +114,14 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="Labeluser">
+            </Component>
+            <Component class="javax.swing.JButton" name="Logout">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Log out"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LogoutActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -357,7 +372,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jButton11" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jButton12" min="-2" max="-2" attributes="0"/>
+                          <Component id="rfrs" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="285" max="32767" attributes="0"/>
                           <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -372,7 +387,7 @@
                               <Component id="jButton9" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton10" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton11" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton12" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="rfrs" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       </Group>
@@ -409,12 +424,12 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton11ActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton12">
+                <Component class="javax.swing.JButton" name="rfrs">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Refresh"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton12ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rfrsActionPerformed"/>
                   </Events>
                 </Component>
                 <Container class="javax.swing.JPanel" name="jPanel9">

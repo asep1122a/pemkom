@@ -45,19 +45,14 @@ public class adminpage extends javax.swing.JFrame {
         viewDataProduct("");
         
     }
-    private void showProfile() {
-    profil profilFrame = new profil();
-    
-    // Set data profil dari Profiluser yang sudah login
-    profilFrame.setName(p.getNama());
-    // Jika Anda ingin menambahkan informasi lain, tambahkan method setter di class profil
-    // Contoh: 
-//     profilFrame.setNama("");
-//     profilFrame.setTelepon("Nomor Telepon");
-//     profilFrame.setTanggalLahir("Tanggal Lahir");
-    
-    profilFrame.setVisible(true);
-}
+//    private void showProfile() {
+//        profil profilFrame = new profil(nama);
+//        profilFrame.setName(p.getNama());
+//        profilFrame.setAlama(p.getAlamat()); // Pastikan Profiluser memiliki metode getAlamat()
+//        profilFrame.setTelepon(p.getTelepon()); // Pastikan Profiluser memiliki metode getTelepon()
+//        profilFrame.setTanggalLahir(p.getTanggal_lahir()); // Pastikan Profiluser memiliki metode getTanggalLahir()
+//        profilFrame.setVisible(true);
+//    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -66,6 +61,7 @@ public class adminpage extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         txtWelcome = new javax.swing.JLabel();
         Labeluser = new javax.swing.JLabel();
+        Logout = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -83,7 +79,7 @@ public class adminpage extends javax.swing.JFrame {
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
-        jButton12 = new javax.swing.JButton();
+        rfrs = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         SearchP = new javax.swing.JTextField();
@@ -103,6 +99,13 @@ public class adminpage extends javax.swing.JFrame {
         txtWelcome.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         txtWelcome.setText("WELCOME");
 
+        Logout.setText("Log out");
+        Logout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LogoutActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -113,6 +116,10 @@ public class adminpage extends javax.swing.JFrame {
                     .addComponent(txtWelcome)
                     .addComponent(Labeluser, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(628, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Logout)
+                .addGap(18, 18, 18))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,7 +128,9 @@ public class adminpage extends javax.swing.JFrame {
                 .addComponent(txtWelcome)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Labeluser, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(Logout)
+                .addGap(14, 14, 14))
         );
 
         jPanel1.add(jPanel5, java.awt.BorderLayout.PAGE_END);
@@ -271,10 +280,10 @@ public class adminpage extends javax.swing.JFrame {
             }
         });
 
-        jButton12.setText("Refresh");
-        jButton12.addActionListener(new java.awt.event.ActionListener() {
+        rfrs.setText("Refresh");
+        rfrs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton12ActionPerformed(evt);
+                rfrsActionPerformed(evt);
             }
         });
 
@@ -307,7 +316,7 @@ public class adminpage extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton12)
+                .addComponent(rfrs)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 285, Short.MAX_VALUE)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -320,7 +329,7 @@ public class adminpage extends javax.swing.JFrame {
                     .addComponent(jButton9)
                     .addComponent(jButton10)
                     .addComponent(jButton11)
-                    .addComponent(jButton12))
+                    .addComponent(rfrs))
                 .addGap(26, 26, 26))
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
@@ -382,7 +391,9 @@ public class adminpage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProfileActionPerformed
-      showProfile();
+        profil profil = new profil(p.getNama(), "dmin");
+        profil.setVisible(true);
+        this.dispose();
      
     }//GEN-LAST:event_ProfileActionPerformed
 
@@ -475,10 +486,12 @@ public class adminpage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SearchPActionPerformed
 
-    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+    private void rfrsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rfrsActionPerformed
         // TODO add your handling code here:
+       SearchP.setText("");
        viewDataProduct("");
-    }//GEN-LAST:event_jButton12ActionPerformed
+       
+    }//GEN-LAST:event_rfrsActionPerformed
 
     private void SearchPKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_SearchPKeyReleased
         // TODO add your handling code here:
@@ -503,29 +516,12 @@ public class adminpage extends javax.swing.JFrame {
         int n = jTable2.getSelectedRow();
     if (n != -1) {
         try {
-            // Pastikan untuk menangani kemungkinan null atau parsing error
             int id = Integer.parseInt(jTable2.getValueAt(n, 1).toString());
-            String KP = jTable2.getValueAt(n, 2) != null ? jTable2.getValueAt(n, 2).toString() : "";
-            String NP = jTable2.getValueAt(n, 3) != null ? jTable2.getValueAt(n, 3).toString() : "";
-            String GP = jTable2.getValueAt(n, 4) != null ? jTable2.getValueAt(n, 4).toString() : "";
-            String K = jTable2.getValueAt(n, 5) != null ? jTable2.getValueAt(n, 5).toString() : "";
-            String S = jTable2.getValueAt(n, 6) != null ? jTable2.getValueAt(n, 6).toString() : "";
-            String HJ = jTable2.getValueAt(n, 7) != null ? jTable2.getValueAt(n, 7).toString() : "";
-            String HB = jTable2.getValueAt(n, 8) != null ? jTable2.getValueAt(n, 8).toString() : "";
-            String SP = jTable2.getValueAt(n, 9) != null ? jTable2.getValueAt(n, 9).toString() : "";
-
+            // Ambil data lainnya...
             ubahproduk E = new ubahproduk(this, true);
             E.setId(id);
-            E.setKP(KP);
-            E.setNP(NP);
-            E.setGP(GP);
-            E.setK(K);
-            E.setS(S);
-            E.setHJ(HJ);
-            E.setHB(HB);
-            E.setSP(SP);
+            // Set data lainnya...
             E.setVisible(true);
-
             // Refresh data setelah ubah
             viewDataProduct("");
         } catch (NumberFormatException e) {
@@ -574,6 +570,12 @@ public class adminpage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Anda belum memilih produk.");
         }
     }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void LogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogoutActionPerformed
+        // TODO add your handling code here:
+    this.dispose();
+    new login().setVisible(true);
+    }//GEN-LAST:event_LogoutActionPerformed
 
     /**
      * @param args the command line arguments
@@ -627,13 +629,13 @@ public class adminpage extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Labeluser;
+    private javax.swing.JButton Logout;
     private javax.swing.JMenuItem Profile;
     private javax.swing.JTextField SearchP;
     private javax.swing.JButton Tambah;
     private javax.swing.JButton hapus;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -654,6 +656,7 @@ public class adminpage extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JButton refresh;
+    private javax.swing.JButton rfrs;
     private javax.swing.JLabel txtWelcome;
     private javax.swing.JTextField txtkey;
     private javax.swing.JButton ubah;

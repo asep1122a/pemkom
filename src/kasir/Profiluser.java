@@ -56,5 +56,34 @@ public class Profiluser {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+
+    public String getTelepon() {
+        return telepon;
+    }
+
+    public void setTelepon(String telepon) {
+        this.telepon = telepon;
+    }
+
+    public String getTanggal_lahir() {
+        return tanggal_lahir;
+    }
+
+    public void setTanggal_lahir(String tanggal_lahir) {
+        this.tanggal_lahir = tanggal_lahir;
+    }
     
+    private String alamat;
+    private String telepon;
+    private String tanggal_lahir;
+    
+
 }
