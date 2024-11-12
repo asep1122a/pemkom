@@ -11,6 +11,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 
 /**
@@ -67,14 +69,21 @@ public class login extends javax.swing.JFrame {
                     this.setVisible(false);
                     O.setVisible(true);
                 }
-            } else {
-                JOptionPane.showMessageDialog(this, "Invalid username/password");
-                txt_username.requestFocus();
-            }
-
-        } catch (HeadlessException | SQLException e) {
-            System.err.println(e.getMessage());
+           Date d = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy H:m:s z");
+            String tanggal = sdf.format(d);
+            
+            
+            Loging.logActivity("\n["+tanggal+"] Berhasil Login "); 
+            JOptionPane.showMessageDialog(this, "Data berhasil disimpan");
+        }else {
+            JOptionPane.showMessageDialog(this, "GAGAL Login\n"+"Username/Password diisi dengan benar");
+            txt_password.requestFocus();
         }
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage());
+    }
 
     }    
     /**
